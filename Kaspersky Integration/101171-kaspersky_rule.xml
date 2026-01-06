@@ -2,15 +2,16 @@
     <rule id="101171" level="0">
         <field name="integration">kaspersky_openti</field>
         <options>no_full_log</options>
-        <description>Kaspersky OpenTI: Evento recibido por la integración.</description>
+        <description>Kaspersky OpenTIP: Event to receive the integration.</description>
     </rule>
     <rule id="101172" level="12">
       <if_sid>101171</if_sid>
       <field name="kaspersky.status">malicious</field>
-      <description>Kaspersky OpenTI detectó hash malicioso [Zona: $(kaspersky.zone)] para archivo '$(kaspersky.original_filepath)' en agente '$(agent.name)' (ID: $(agent.id)). Hash [$(kaspersky.hash_type)]: $(kaspersky.hash). Detecciones: $(kaspersky.detections)</description>
+      <description>Kaspersky OpenTI detects hash malicioso [Zona: $(kaspersky.zone)] to archive '$(kaspersky.original_filepath)' and agent '$(agent.name)' (ID: $(agent.id)). Hash [$(kaspersky.hash_type)]: $(kaspersky.hash). Detections: $(kaspersky.detections)</description>
     <group>malware_detected,kaspersky_openti,</group>
     <mitre>
       <id>T1204.002</id>
      </mitre>
   </rule>
+
 </group>
