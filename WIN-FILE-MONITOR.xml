@@ -1,0 +1,36 @@
+<!-- File Integrity Monitering -->
+<!-- Apply in /var/ossec/etc/ossec.conf -->
+
+<syscheck>
+  <!-- Run every 12 hours -->
+  <frequency>43200</frequency>
+
+  <!-- Real-time monitoring -->
+  <scan_on_start>yes</scan_on_start>
+
+  <!-- Windows critical directories -->
+  <directories realtime="yes" report_changes="yes">C:\Windows\System32</directories>
+  <directories realtime="yes" report_changes="yes">C:\Windows\SysWOW64</directories>
+  <directories realtime="yes" report_changes="yes">C:\Program Files</directories>
+  <directories realtime="yes" report_changes="yes">C:\Program Files (x86)</directories>
+
+  <!-- Registry monitoring -->
+  <windows_registry>HKEY_LOCAL_MACHINE\Software</windows_registry>
+  <windows_registry>HKEY_LOCAL_MACHINE\System</windows_registry>
+
+  <!-- Ignore noisy files -->
+  <ignore>C:\Windows\Temp</ignore>
+  <ignore>C:\Windows\Prefetch</ignore>
+  <ignore>C:\Windows\SoftwareDistribution</ignore>
+
+  <!-- Ignore common volatile extensions -->
+  <ignore type="sregex">\.log$|\.tmp$|\.bak$|\.swp$</ignore>
+
+  <!-- Hashes -->
+  <checksum>yes</checksum>
+  <sha1sum>yes</sha1sum>
+  <sha256sum>yes</sha256sum>
+
+  <!-- Performance protection -->
+  <max_eps>100</max_eps>
+</syscheck>
